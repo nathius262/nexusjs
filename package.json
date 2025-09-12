@@ -47,9 +47,12 @@
     "handlebars-helpers": "^0.10.0",
     "jsonwebtoken": "^9.0.2",
     "minimist": "^1.2.8",
+    "nodemailer": "^7.0.6",
     "ora": "^8.2.0",
     "sequelize": "^6.37.7",
     "sequelize-cli": "^6.6.2",
+    "truncate-html": "^1.2.2",
+    "sqlite3": "^5.1.7",
     "tslib": "^2.8.1",
     "umzug": "^3.8.2"
   },
@@ -64,7 +67,6 @@
     "node-mocks-http": "^1.16.2",
     "nodemon": "^3.1.9",
     "rollup": "^4.40.1",
-    "sqlite3": "^5.1.7",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3"
   }
