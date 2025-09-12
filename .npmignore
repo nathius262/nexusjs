@@ -6,10 +6,6 @@ __test__/
 db_test.sqlite
 db.sqlite
 
-
-# Exclude source code (not needed in the npm package)
-src/
-
 # Exclude TypeScript build configs (you don't want to include these)
 tsconfig.json
 tsup.config.ts
