@@ -3,7 +3,7 @@ import { authenticate, authorize } from './auth.middleware.js';
 const prefixRoleMap = {
   '/admin': ['admin'],
   '/user': ['user'],
-  //'/instructor': ['instructor'],
+  //'/staff': ['staff'],
 };
 
 export const authorizeByPrefix = (req, res, next) => {
