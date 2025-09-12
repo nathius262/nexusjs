@@ -43,7 +43,7 @@ export const registerUserService = async ({ first_name, last_name, email, passwo
     email,
     password: hashedPassword,
     bio,
-    avatar_url: '/assets/images/profile.png',
+    avatar_url: '/assets/img/profile.png',
   });
 
   const roleRecord = await db.Role.findOne({ where: { name: role } });

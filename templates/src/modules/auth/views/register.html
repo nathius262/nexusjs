@@ -2,20 +2,20 @@
   <div class="container" style="max-width:500px; margin:auto; padding:2rem;">
     <!-- Logo -->
     <div class="text-center mb-4">
-      <img width="150" src="/assets/images/logo.png" alt="Petra ICT Hub">
+      <img width="150" src="/assets/img/logo.png" alt="Petra ICT Hub">
     </div>
 
     <!-- Role Toggle -->
     <div class="btn-group mb-4 w-100 d-flex justify-content-center" role="group" aria-label="Role toggle">
-      <button type="button" class="btn btn-outline-success role-btn active" data-role="student">Student</button>
-      <button type="button" class="btn btn-outline-success role-btn" data-role="instructor">Instructor</button>
+      <button type="button" class="btn btn-outline-success role-btn active" data-role="user">Student</button>
+      <button type="button" class="btn btn-outline-success role-btn" data-role="staff">Instructor</button>
     </div>
 
     <!-- Heading -->
     <h2 style="color:#105341; text-align:center;">Register as <span id="roleHeading">Student</span></h2>
 
     <!-- Form -->
-    <form id="authForm" class="needs-validation" action="/auth/student/register" method="POST" novalidate>
+    <form id="authForm" class="needs-validation" action="/auth/user/register" method="POST" novalidate>
       <input type="text" name="first_name" placeholder="First Name" required>
       <div class="invalid-feedback">First name is required</div>
 
