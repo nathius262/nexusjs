@@ -7,20 +7,20 @@
 
     <!-- Role Toggle -->
     <div class="btn-group mb-4 w-100 d-flex justify-content-center" role="group" aria-label="Role toggle">
-      <button type="button" class="btn btn-outline-success role-btn active" data-role="user">Student</button>
-      <button type="button" class="btn btn-outline-success role-btn" data-role="staff">Instructor</button>
+      <button type="button" class="btn btn-outline-success role-btn active" data-role="user">User</button>
+      <button type="button" class="btn btn-outline-success role-btn" data-role="staff">Staff</button>
     </div>
 
     <!-- Heading -->
-    <h2 style="color:#105341; text-align:center;">Register as <span id="roleHeading">Student</span></h2>
+    <h2 class="text-primary" >Register as <span id="roleHeading">User</span></h2>
 
     <!-- Form -->
     <form id="authForm" class="needs-validation" action="/auth/user/register" method="POST" novalidate>
-      <input type="text" name="first_name" placeholder="First Name" required>
+      <!-- <input type="text" name="first_name" placeholder="First Name" required>
       <div class="invalid-feedback">First name is required</div>
 
       <input type="text" name="last_name" placeholder="Last Name" required>
-      <div class="invalid-feedback">Last name is required</div>
+      <div class="invalid-feedback">Last name is required</div> -->
 
       <input type="email" name="email" placeholder="Email Address" required>
       <div class="invalid-feedback">Email is required</div>

@@ -1,3 +1,14 @@
+:root {
+  --black: black;
+  --white: white;
+  --green: #1A5F16;
+  --gold: #E8A317;
+  --bg-body: #020325;
+  --bg-blue-transparent: #141668;
+  --blue-transparent: #287ea3da;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,6 +16,14 @@ body {
     background-color: #f4f4f4;
     color: #333;
     text-align: center;
+}
+
+
+/* ===== REUSABLE SCROLL ANIMATIONS ===== */
+/* Base animation class (hidden state) */
+/* ===== REUSABLE SCROLL TRANSFORMS ===== */
+.scroll-y-top-el, .scroll-y-down-el, .scroll-x-top-el, .scroll-x-down-el{
+    transition: transform 2s ease;
 }
 
 header {
@@ -48,39 +67,3 @@ footer {
     font-size: 0.9rem;
 }
 
-/* AUTHENTICATION SECTION */
-main input {
-    width: 100%;
-    padding: 0.6rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-
-  main form button {
-    background: #2834e2;
-    color: white;
-    padding: 0.7rem;
-    border: none;
-    border-radius: 6px;
-    width: 100%;
-    transition: all .4s linear;
-  }
-
-  main form button:hover {
-    background: #2834e2;
-  }
-
-  .fa-eye, .fa-eye-slash {
-    position: absolute;
-    right: 8px;
-    top: 40%;
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
-
-  .role-btn.active {
-    background: #2834e2;
-    color: white;
-    border-color: #2834e2;
-  }

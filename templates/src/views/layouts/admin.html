@@ -43,6 +43,7 @@
 
 
     <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/admin.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -55,25 +56,116 @@
 
     <!--============ROOT SECTION==============-->
     <section id="root" class=" position-relative overflow-x-hidden">
-        <!--=========HEADER BEGIN===========-->
-        {{> header}}
-        <!--=========HEADER END===========-->
+        <!-- SIDEBAR -->
+        <div class="sidebar bg-dark text-white">
+            <div class="sidebar-header p-3 border-bottom border-secondary">
+                <h4 class="mb-0">
+                    <i class="fas fa-project-diagram me-2"></i>
+                    NexusJs
+                </h4>
+            </div>
+            <div class="sidebar-menu p-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white d-flex align-items-center" href="/admin">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white d-flex align-items-center" href="/admin/user">
+                            <i class="fas fa-user me-2"></i>
+                            Users
+                        </a>
+                    </li>
 
-        <!--=========MAIN BEGIN===========-->
-        
-        {{{body}}}
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white d-flex align-items-center" href="/admin/role">
+                            <i class="fas fa-users me-2"></i>
+                            Roles
+                        </a>
+                    </li>
 
-        <!--=========MAIN END===========-->
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white d-flex align-items-center" href="#">
+                            <i class="fas fa-cog me-2"></i>
+                            Settings
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white d-flex align-items-center" href="#">
+                            <i class="fas fa-chart-bar me-2"></i>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white d-flex align-items-center" href="#">
+                            <i class="fas fa-file-alt me-2"></i>
+                            Reports
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-        <!--=========FOOTER BEGIN===========-->
-        {{> notification/success}}
-        {{> footer}}
-        <!--=========FOOTER END===========-->
+        <!-- MAIN CONTENT WRAPPER -->
+        <div class="main-content">
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <div class="container-fluid">
+                    <button class="btn btn-sm" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                    <div class="d-flex align-items-center ms-auto">
+                        <div class="dropdown me-3">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger rounded-pill">3</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+                                <li><a class="dropdown-item" href="#">New user registered</a></li>
+                                <li><a class="dropdown-item" href="#">Server update completed</a></li>
+                                <li><a class="dropdown-item" href="#">Payment received</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                    <span class="text-white">A</span>
+                                </div>
+                                <span>Admin</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logout-button"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!--=========MAIN BEGIN===========-->
+            
+            {{{body}}}
+
+            <!--=========MAIN END===========-->
+
+            <!--=========FOOTER BEGIN===========-->
+            {{> notification/success}}
+            {{> modals/message}}
+            {{> modals/delete}}
+            <!--=========FOOTER END===========-->
+        </div>
     </section>
     <!--============ROOT SECTION END==============-->
 
    
     <script type="module" src="/assets/js/app.js"></script>
+    <script src="/assets/js/delete.js"></script>
 
     <script>
         //global script
@@ -120,6 +212,11 @@
             document.getElementById('logout-button').addEventListener('click', handleLogout);
         } catch { }
 
+        // Sidebar toggle functionality
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('collapsed');
+            document.querySelector('.main-content').classList.toggle('expanded');
+        });
     </script>
 
 

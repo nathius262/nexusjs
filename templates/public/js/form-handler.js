@@ -4,7 +4,7 @@ import {messageAlert} from './utils.js'
 
 (function () {
     'use strict'
-console.log('test')
+    console.log('form handler loaded')
 
   
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -19,7 +19,7 @@ console.log('test')
           if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
-            console.log("requuired")
+            console.log("required")
           }
           else{
             event.preventDefault()

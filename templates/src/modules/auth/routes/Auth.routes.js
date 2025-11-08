@@ -35,7 +35,7 @@ router.post('/admin/login', (req, res) => {
   return controller.loginUser(req, res);
 });
 
-// ---------- Student ----------
+// ---------- User ----------
 router.post('/user/register', (req, res) => {
   req.body.role = 'user';
   return controller.registerUser(req, res);
@@ -45,7 +45,7 @@ router.post('/user/login', (req, res) => {
   return controller.loginUser(req, res);
 });
 
-// ---------- Instructor (future-ready) ----------
+// ---------- Staff (future-ready) ----------
 // router.post('/staff/register', (req, res) => {
 //   req.body.role = 'staff';
 //   return registerUser(req, res);

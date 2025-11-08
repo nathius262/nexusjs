@@ -43,9 +43,11 @@ module.exports = function createController(argv) {
   const {page, limit, offset} = req.pagination
   try {
     const data = await service.findAll({limit, offset});
-    res.status(200).render('${isAdmin ? `./admins/${moduleName}_list, layout: admin, PageTitle: Admin` : `./${moduleName}_list`}', {
+    res.status(200).render('${isAdmin ? `./admins/${moduleName}_list` : `./${moduleName}_list`}', {
       success: true,
       pageTitle: "${isAdmin ? 'Admin' : ''}",
+      layout: "admin", 
+      PageTitle: "Admin",
       ${moduleName}s: data.${moduleName}s,
       totalItems: data.totalItems,
       totalPages: data.totalPages,
@@ -60,9 +62,11 @@ module.exports = function createController(argv) {
     exportFunction('findById', `async (req, res) => {
   try {
     const data = await service.findById(req.params.id);
-    res.status(200).render('${isAdmin ? `./admins/${moduleName}_update, layout: admin, PageTitle: Admin` : `./${moduleName}_single`}', {
+    res.status(200).render('${isAdmin ? `./admins/${moduleName}_update` : `./${moduleName}_single`}', {
       success: true,
       pageTitle: "${isAdmin ? 'Update Record' : 'Details'}",
+      layout: "admin", 
+      PageTitle: "Admin",
       ${moduleName}: data,
     });
   } catch (err) {
@@ -109,8 +113,8 @@ module.exports = function createController(argv) {
   try {
     res.status(200).render('./admins/${moduleName}_create', {
       pageTitle: "Create ${modelName}", 
-      layout: admin, 
-      PageTitle: Admin
+      layout: "admin", 
+      PageTitle: "Admin"
     });
   } catch (err) {
     console.log(err)
