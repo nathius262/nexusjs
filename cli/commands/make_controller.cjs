@@ -43,7 +43,7 @@ module.exports = function createController(argv) {
   const {page, limit, offset} = req.pagination
   try {
     const data = await service.findAll({limit, offset});
-    res.status(200).render('${isAdmin ? `./admins/${moduleName}_list` : `./${moduleName}_list`}', {
+    res.status(200).render('${isAdmin ? `./admins/${moduleName}_list, layout: admin, PageTitle: Admin` : `./${moduleName}_list`}', {
       success: true,
       pageTitle: "${isAdmin ? 'Admin' : ''}",
       ${moduleName}s: data.${moduleName}s,
@@ -60,7 +60,7 @@ module.exports = function createController(argv) {
     exportFunction('findById', `async (req, res) => {
   try {
     const data = await service.findById(req.params.id);
-    res.status(200).render('${isAdmin ? `./admins/${moduleName}_update` : `./${moduleName}_single`}', {
+    res.status(200).render('${isAdmin ? `./admins/${moduleName}_update, layout: admin, PageTitle: Admin` : `./${moduleName}_single`}', {
       success: true,
       pageTitle: "${isAdmin ? 'Update Record' : 'Details'}",
       ${moduleName}: data,
@@ -78,7 +78,7 @@ module.exports = function createController(argv) {
       exportFunction('create', `async (req, res) => {
   try {
     const data = await service.create(req.body);
-    res.status(201).json({ success: true, data });
+    res.status(201).json({ success: true, redirectTo: "/admin/${moduleName}", message: "Created successfully" });
   } catch (err) {
     console.log(err)
     res.status(500).json({ error: err });
@@ -88,7 +88,7 @@ module.exports = function createController(argv) {
       exportFunction('update', `async (req, res) => {
   try {
     const data = await service.update(req.params.id, req.body);
-    res.status(200).json({ success: true, data });
+    res.status(200).json({ success: true, data, redirectTo: \`/admin/${moduleName}/\${req.params.id}\`, message: "Updated successfully" });
   } catch (err) {
     console.log(err)
     res.status(500).json({ error: err });
@@ -98,7 +98,7 @@ module.exports = function createController(argv) {
       exportFunction('destroy', `async (req, res) => {
   try {
     const data = await service.destroy(req.params.id);
-    res.status(200).json({ success: true, message: 'Deleted successfully', data });
+    res.status(200).json({ success: true, message: 'Deleted successfully', redirectTo: "/admin/${moduleName}" });
   } catch (err) {
     console.log(err)
     res.status(500).json({ error: err });
@@ -108,7 +108,9 @@ module.exports = function createController(argv) {
       exportFunction('renderCreate', `async (req, res) => {
   try {
     res.status(200).render('./admins/${moduleName}_create', {
-      pageTitle: "Create ${modelName}"
+      pageTitle: "Create ${modelName}", 
+      layout: admin, 
+      PageTitle: Admin
     });
   } catch (err) {
     console.log(err)

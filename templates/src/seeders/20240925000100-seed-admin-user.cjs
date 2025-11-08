@@ -73,7 +73,7 @@ async function seedAdmin(queryInterface, Sequelize) {
       // Insert admin user
       await queryInterface.bulkInsert('users', [
         {
-          //username: process.env.USER_ADMIN_USERNAME,
+          username: process.env.USER_ADMIN_USERNAME,
           email: process.env.USER_ADMIN_EMAIL,
           password: hashedPassword,
           created_at: new Date(),
